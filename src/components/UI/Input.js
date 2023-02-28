@@ -1,10 +1,17 @@
-import classes from './Input.module.css'
+import React from "react";
 
-const Input = props => { 
-  return <div className={classes.input}>
-    <label htmlFor={props.input.id}>{props.label}</label>
-    <input {...props.input}/>
-  </div>
- }
+import classes from "./Input.module.css";
 
-export default Input
+// React.forwardRef allows ref to be used in this function
+// ref is essentially a pointer to <input/> and allows us to access that value that
+// has been inputted into the input field
+const Input = React.forwardRef((props, ref) => {
+  return (
+    <div className={classes.input}>
+      <label htmlFor={props.input.id}>{props.label}</label>
+      <input ref={ref} {...props.input} />
+    </div>
+  );
+});
+
+export default Input;

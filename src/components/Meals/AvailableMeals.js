@@ -29,10 +29,13 @@ const DUMMY_MEALS = [
   },
 ];
 
+
+// This component displays all of the available meals
 const AvailableMeals = () => {
   const mealsList = DUMMY_MEALS.map((meal) => (
     <MealItem
       key={meal.id}
+      id={meal.id}
       name={meal.name}
       description={meal.description}
       price={meal.price}
