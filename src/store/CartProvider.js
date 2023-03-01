@@ -1,6 +1,9 @@
 // useReducer is better than useState when keeping track of a complicated object with several variables
 import { useReducer } from "react";
 
+// As the number of components increases, it becomes more difficult to pass information through
+// the prop of each component. 
+// Context is used in order to avoid having to constantly pass information through props.
 import CartContext from "./cart-context";
 
 const defaultCartState = {
