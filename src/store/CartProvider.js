@@ -11,7 +11,7 @@ const defaultCartState = {
   totalAmount: 0,
 };
 
-// The action parameter is the object that was passed into dispatchCartAction()
+// The action parameter is the object that was passed into dispatchCartAction().
 // This function returns the items in the cart and the total amount. It also
 // contains the code for adding or removing an item.
 const cartReducer = (state, action) => {
