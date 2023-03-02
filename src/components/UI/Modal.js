@@ -16,6 +16,7 @@ const ModalOverlay = (props) => {
 
 const portalElement = document.getElementById("overlays");
 
+// The modal is a box that shows up in front of everything else on website
 const Modal = (props) => {
   return (
     <Fragment>

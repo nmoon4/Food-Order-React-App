@@ -1,5 +1,6 @@
 import classes from './MealsSummary.module.css';
 
+// This component just shows some text that the user can read
 const MealsSummary = () => {
   return (
     <section className={classes.summary}>
