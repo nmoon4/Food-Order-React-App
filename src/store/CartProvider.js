@@ -50,6 +50,31 @@ const cartReducer = (state, action) => {
     };
   }
 
+  if (action.type === 'REMOVE') {
+    // Finds the item that was clicked on using the id provided by the action parameter
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.id
+    );
+    const existingItem = state.items[existingCartItemIndex];
+    const updatedTotalAmount = state.totalAmount - existingItem.price;
+
+    let updatedItems;
+
+    if (existingItem.amount === 1) {
+      // filters out the item that should be removed
+      updatedItems = state.items.filter(item => item.id !== action.id)
+    } else {
+      const updatedItem = {...existingItem, amount: existingItem.amount - 1}
+      updatedItems = [...state.items]
+      updatedItems[existingCartItemIndex] = updatedItem
+    }
+
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount
+    }
+  }
+
   return defaultCartState;
 };
 
@@ -62,6 +87,8 @@ const CartProvider = (props) => {
   );
 
   const addItemToCartHandler = (item) => {
+    // dispatchCartAction() was one of the outputs from useReducer() in the lines above.
+    // It is a function is used to update cartState.
     dispatchCartAction({ type: "ADD", item: item });
   };
 
