@@ -34,6 +34,7 @@ const DUMMY_MEALS = [
 // This component displays all of the available meals
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   // If the fetchMeals() function is called without using useEffect(), it will create an infinite loop.
   // This is because fetchMeals() modifies the state, which causes the component to re-render and call
@@ -61,10 +62,17 @@ const AvailableMeals = () => {
       }
 
       setMeals(loadedMeals)
+      setIsLoading(false)
     };
 
     fetchMeals();
   }, []);
+
+  if (isLoading) {
+    return <section className={classes.MealsLoading}>
+      <p>Loading...</p>
+    </section>
+  }
 
   const mealsList = meals.map((meal) => (
     <MealItem
